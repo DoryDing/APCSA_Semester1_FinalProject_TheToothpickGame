@@ -95,18 +95,25 @@ public class TheToothpickGame
         Scanner userInput = new Scanner(System.in);
         System.out.print("Hello Player 1! Please enter your name to start the game: ");
         player1Name = userInput.nextLine();
-        System.out.print("Thank you " + player1Name + ". Are you going to play with the computer?");
+        System.out.print("Thank you " + player1Name + ". Are you going to play with the computer? ");
         String playerDecision = userInput.nextLine();
-        while(!playerDecision.equalsIgnoreCase("yes") && !playerDecision.equalsIgnoreCase("no")){
-            System.out.println("Sorry, the choice you entered is invalid. Please enter whether yes or no: ");
+        while((!playerDecision.equalsIgnoreCase("yes")) && (!playerDecision.equalsIgnoreCase("no"))){
+            System.out.print("Sorry, the choice you entered is invalid. Please enter whether yes or no: ");
             playerDecision = userInput.nextLine();
         }
         if(playerDecision.equalsIgnoreCase("yes")){
             computerOpponent = true;
-            System.out.print("It seems like you chose to play with me! From 1 to 3, please enter the difficulty level that you wanna the game to be: ");
+            System.out.println("************************ ");
+            System.out.println("* Computer Skill Level * ");
+            System.out.println("************************ ");
+            System.out.println("* 1) Ann Smith         * ");
+            System.out.println("* 2) IBM Watson        * ");
+            System.out.println("* 3) Harvard            * ");
+            System.out.println("************************ ");
+            System.out.print("It seems like you chose to play with me! From 1 to 3, please choose the computer that you want to play with: ");
             int difficultyLevel = userInput.nextInt();
             while(difficultyLevel <= 0 || difficultyLevel > 3){
-                System.out.print("Sorry, your input is invalid. Please enter a difficulty level from 1 to 3: ");
+                System.out.print(player1Name + ", that was not one of the options!  Pick 1, 2, or 3. ");
                 difficultyLevel = userInput.nextInt();
             }
             if(difficultyLevel == 1){
@@ -167,7 +174,7 @@ public class TheToothpickGame
         System.out.print("Do you want me to randomly determine the maximum number of toothpicks that you can take per turn: ");
         String playerDecision = userInput.nextLine();
         while(!playerDecision.equalsIgnoreCase("yes") && !playerDecision.equalsIgnoreCase("no")){
-            System.out.println("Sorry, the choice you entered is invalid. Please enter whether yes or no: ");
+            System.out.print("Sorry, the choice you entered is invalid. Please enter whether yes or no: ");
             playerDecision = userInput.nextLine();
         }
         if(playerDecision.equalsIgnoreCase("yes")){
@@ -177,7 +184,7 @@ public class TheToothpickGame
             System.out.print("Please set up the maximum number of toothpicks that each player can take per turn (either 3, 4, 5, or 6): ");
             maxToothpicksPerTurn = userInput.nextInt();
             while(maxToothpicksPerTurn != 3 && maxToothpicksPerTurn != 4 && maxToothpicksPerTurn != 5 && maxToothpicksPerTurn != 6){
-                System.out.println("Sorry, your input is invalid. Please choose either 3, 4, 5, or 6: ");
+                System.out.print("Sorry, your input is invalid. Please choose either 3, 4, 5, or 6: ");
                 maxToothpicksPerTurn = userInput.nextInt();
             }
         }
@@ -294,7 +301,7 @@ public class TheToothpickGame
      */
     private static void player1TakesTurn(){
         Scanner userInput = new Scanner(System.in);
-        System.out.println(player1Name + ", please enter the number of toothpicks you want to take this turn: ");
+        System.out.print(player1Name + ", please enter the number of toothpicks you want to take this turn: ");
         int numToothpicks = userInput.nextInt();
         while(numToothpicks > toothpicksRemaining || numToothpicks > maxToothpicksPerTurn || numToothpicks <= 0){
             if(numToothpicks > toothpicksRemaining){
@@ -304,7 +311,7 @@ public class TheToothpickGame
             }else{
                 System.out.print("**Error** You cannot take negative number of toothpicks nor not taking any toothpicks.");
             }
-            System.out.print(" Please enter the number of toothpicks you want to take this turn again: ");
+            System.out.print("Please enter the number of toothpicks you want to take this turn again: ");
             numToothpicks = userInput.nextInt();
         }
         toothpicksRemaining -= numToothpicks;
@@ -327,7 +334,7 @@ public class TheToothpickGame
             }else{
                 System.out.print("**Error** You cannot take negative number of toothpicks nor not taking any toothpicks.");
             }
-            System.out.print(" Please enter the number of toothpicks you want to take this turn again: ");
+            System.out.print("Please enter the number of toothpicks you want to take this turn again: ");
             numToothpicks = userInput.nextInt();
         }
         toothpicksRemaining -= numToothpicks;
