@@ -247,7 +247,7 @@ public class TheToothpickGame
         System.out.println("This turn, there are " + toothpicksRemaining + " on the table.");
         currentPlayer = (int)(Math.random() * 2) + 1;
         if(computerOpponent && currentPlayer == 2){
-            System.out.println("After flipping a coin, I am luckly be decided to go first.");
+            System.out.println("After flipping a coin, I am luckily be decided to go first.");
         }else{
             System.out.println("After flipping a coin, player " + currentPlayer + " is decided to go first.");
         }
@@ -262,11 +262,11 @@ public class TheToothpickGame
     private static void congratulateWinner(){
         if(currentPlayer == 1){
             player1Wins++;
-            System.out.println("Congradulations! " + player1Name + ", you have won this round!");
+            System.out.println("Congratulations! " + player1Name + ", you have won this round!");
         }
         else{
             player2Wins++;
-            System.out.println("Congradulations! " + player2Name + ", you have won this round!");
+            System.out.println("Congratulations! " + player2Name + ", you have won this round!");
         }
         System.out.println("Until now, " + player1Name + " have won " + player1Wins + " rounds. " + player2Name + " have won " + player2Wins + " rounds.\n");
     }
@@ -542,9 +542,9 @@ public class TheToothpickGame
     private static void displayFinalStats(){
         displayFinalStatsBanner();
         if(currentPlayer == 1){
-            System.out.println("Congradulations! " + player1Name + ", you have won this game!");
+            System.out.println("Congratulations! " + player1Name + ", you have won this game!");
         }else{
-            System.out.println("Congradulations! " + player2Name + ", you have won this game!");
+            System.out.println("Congratulations! " + player2Name + ", you have won this game!");
         }
         System.out.println("In total, " + player1Name + " have won " + player1Wins + " games, and " + player2Name + " have won " + player2Wins + " games.");
     }
