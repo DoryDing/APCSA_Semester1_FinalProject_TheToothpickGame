@@ -4,7 +4,7 @@
  * 
  * @author Someone
  */
-public class TheToothpickGameTemplate
+public class TheToothpickGame
 {
 
     public static void main(String[] args)
