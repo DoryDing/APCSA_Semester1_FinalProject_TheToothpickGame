@@ -25,7 +25,6 @@ public class TheToothpickGame
     public static String player1Name;
     public static String player2Name;
     public static boolean randomMaxToothpicksPerTurn; //whether computer will randomly decide the value of maxToothpicksPerTurn in the beginning of every game
-    public static String winner;
     public static void main(String[] args)
     {
         displayWelcomeBanner(); //Display welcome banner
@@ -33,11 +32,6 @@ public class TheToothpickGame
 
         while (player1Wins != winsNeeded && player2Wins != winsNeeded){ //play a game while someone has not won the series of games
             playOneGame();
-        }
-        if(player1Wins == winsNeeded){
-            winner = player1Name;
-        }else{
-            winner = player2Name;
         }
 
         displayFinalStats(); //Congratulate the overall winner and display series stats.
@@ -111,22 +105,21 @@ public class TheToothpickGame
             System.out.println("* 3) Harvard            * ");
             System.out.println("************************ ");
             System.out.print("It seems like you chose to play with me! From 1 to 3, please choose the computer that you want to play with: ");
-            int difficultyLevel = userInput.nextInt();
-            while(difficultyLevel <= 0 || difficultyLevel > 3){
+
+            String difficultyLevel = userInput.nextLine();
+            while(!difficultyLevel.equals("1") && !difficultyLevel.equals("2") && !difficultyLevel.equals("3")){
                 System.out.print(player1Name + ", that was not one of the options!  Pick 1, 2, or 3. ");
-                difficultyLevel = userInput.nextInt();
+                difficultyLevel = userInput.nextLine();
             }
-            if(difficultyLevel == 1){
+            if(difficultyLevel.equals("1")){
                 compSkillLevel = EASY;
-                player2Name = "EasyComputer";
-            }
-            if(difficultyLevel == 2){
+                player2Name = "Ann Smith";
+            }else if(difficultyLevel.equals("2")){
                 compSkillLevel = MEDIUM;
-                player2Name = "MediumComputer";
-            }
-            if(difficultyLevel == 3){
+                player2Name = "IBM Watson";
+            }else if(difficultyLevel.equals("3")){
                 compSkillLevel = HARD;
-                player2Name = "HardComputer";
+                player2Name = "Harvard";
             }
         }else{
             computerOpponent = false;
@@ -146,7 +139,7 @@ public class TheToothpickGame
      */
     private static int getWinsNeeded(){
         Scanner userInput = new Scanner(System.in);
-        System.out.print(player1Name + ", how mant series do you want to play? Choose whether 1, 3, 5, or 7: ");
+        System.out.print(player1Name + ", how many series do you want to play? Choose whether 1, 3, 5, or 7: ");
         int numGames = userInput.nextInt();
         while(numGames != 1 && numGames != 3 && numGames != 5 && numGames != 7){
             System.out.print("The number of games you entered is invalid. Please enter either 1, 3, 5, or 7 to indicate how many games you want to play: ");
@@ -404,14 +397,15 @@ public class TheToothpickGame
     private static String getEasyTurnDescription(int num){
         int randomNum = (int)(Math.random() * 4);
         String output = "EasyComputer: ";
+        String toothpickString = num == 1 ? " toothpick" : " toothpicks";
         if(randomNum == 0)
             output += "Hello, my name is Intelligence Artificial. I take " + num + " this turn! Heyhey, are you excited?";
         else if(randomNum == 1)
-            output += "Today is a sunny day, isn't it? Ohoh! It's my turn? Well, I take " + num + " toothpicks.";
+            output += "Today is a sunny day, isn't it? Ohoh! It's my turn? Well, I take " + num + toothpickString;
         else if(randomNum == 2)
-            output += "Hey, what's your name? How old are you? Do you have a date? Tell me!!! Otherwise I will not tell you that I take " + num + " toothpicks this turn.";
+            output += "Hey, what's your name? How old are you? Do you have a date? Tell me!!! Otherwise I will not tell you that I take " + num + toothpickString +" this turn.";
         else
-            output += "If I win this game, can I go to Harvard? I take " + num + " toothpicks this turn, I am so smart!!!";
+            output += "If I win this game, can I go to Harvard? I take " + num + toothpickString +" this turn, I am so smart!!!";
         return output;
     }
 
@@ -446,14 +440,15 @@ public class TheToothpickGame
     private static String getMediumTurnDescription(int num){
         String output = "Medium Computer: ";
         int randomNum = (int)(Math.random() * 4) + 1;
+        String toothpickString = num == 1 ? " toothpick" : " toothpicks";
         if(randomNum == 1)
-            output += "Heyyy bro, do you love my choice: " + num + " toothpicks?";
+            output += "Heyyy bro, do you love my choice: " + num + toothpickString +" ?";
         else if(randomNum == 2)
-            output += "Guess how many toothpics I took? I won't tell you that I took " + num + ".";
+            output += "Guess how many" + toothpickString +" I took? I won't tell you that I took " + num + ".";
         else if(randomNum == 3)
-            output += "Imagine taking " + num + " toothpicks~";
+            output += "Imagine taking " + num + toothpickString +" ~";
         else
-            output += "I know I'm gonna win, because I took " + num + " toothpicks.";
+            output += "I know I'm gonna win, because I took " + num + toothpickString + " .";
         return output;
     }
 
@@ -513,24 +508,25 @@ public class TheToothpickGame
     private static String getHardTurnDescription(int num, boolean happy){
         String output = "HardComputer: ";
         int selection = (int)(Math.random() * 4) + 1;
+        String toothpickString = num == 1 ? " toothpick" : " toothpicks";
         if(happy){
             if(selection == 1)
-                output += "Bruh, do you even realized that I'm gonna win?? Oh come on, ready to cry because I take " + num + " toothpicks this turn.";
+                output += "Bruh, do you even realized that I'm gonna win?? Oh come on, ready to cry because I take " + num + toothpickString + " this turn.";
             else if(selection == 2)
-                output += "Yayyy, taking " + num + " toothpicks, I am closer to win!";
+                output += "Yayyy, taking " + num + toothpickString + " , I am closer to win!";
             else if(selection == 3)
-                output += "Imagine taking " + num + " toothpicks and ready to win.";
+                output += "Imagine taking " + num + toothpickString + " and ready to win.";
             else
-                output += "If you call me sir, I can teach you how to be as smart as me. I, a smart computer, is going to take " + num + " toothpicks.";
+                output += "If you call me sir, I can teach you how to be as smart as me. I, a smart computer, is going to take " + num + toothpickString + " .";
         }else{
             if(selection == 1)
-                output += "Don't laugh! I am taking " + num + " toothpicks this turn, so you might not win! I still have a chance.";
+                output += "Don't laugh! I am taking " + num + toothpickString + " this turn, so you might not win! I still have a chance.";
             else if(selection == 2)
-                output += "Why you have to think for a long time and make a decision? You took too much time and made my mind messy! I take " + num + " toothpicks.";
+                output += "Why you have to think for a long time and make a decision? You took too much time and made my mind messy! I take " + num + toothpickString + " .";
             else if(selection == 3)
-                output += "Bruh, are you kidding? Why you are so agressive to win? It's only a simple simple game! Fine, I take " + num + " toothpicks.";
+                output += "Bruh, are you kidding? Why you are so aggressive to win? It's only a simple simple game! Fine, I take " + num + toothpickString + " .";
             else
-                output += "...... I take " + num + " toothpicks....... :(((((";
+                output += "...... I take " + num + toothpickString + " ...... :(((((";
         }
         return output;
     }
