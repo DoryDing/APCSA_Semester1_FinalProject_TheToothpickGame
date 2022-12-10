@@ -444,11 +444,11 @@ public class TheToothpickGame
         if(randomNum == 1)
             output += "Heyyy bro, do you love my choice: " + num + toothpickString +" ?";
         else if(randomNum == 2)
-            output += "Guess how many" + toothpickString +" I took? I won't tell you that I took " + num + ".";
+            output += "Guess how many toothpicks I took? I won't tell you that I took " + num + toothpickString + ".";
         else if(randomNum == 3)
             output += "Imagine taking " + num + toothpickString +" ~";
         else
-            output += "I know I'm gonna win, because I took " + num + toothpickString + " .";
+            output += "I know I'm gonna win, because I took " + num + toothpickString + ".";
         return output;
     }
 
