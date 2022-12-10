@@ -14,17 +14,18 @@ public class TheToothpickGame
     public static final int EASY = 1;
     public static final int MEDIUM = 2;
     public static final int HARD = 3;
-    public static boolean computerOpponent; //whether play with a computer opponent
-    public static int maxToothpicksPerTurn; //maximum number of toothpicks that each player can take per turn
-    public static int toothpicksRemaining;
-    public static int currentPlayer; //either player 1 or 2
-    public static int compSkillLevel; //easy, medium, or hard
-    public static int winsNeeded;
-    public static int player1Wins; //count how many times that player1 won
-    public static int player2Wins; //count how many times that player2 won
-    public static String player1Name;
-    public static String player2Name;
-    public static boolean randomMaxToothpicksPerTurn; //whether computer will randomly decide the value of maxToothpicksPerTurn in the beginning of every game
+    private static boolean computerOpponent; //whether play with a computer opponent
+    private static int maxToothpicksPerTurn; //maximum number of toothpicks that each player can take per turn
+    private static int toothpicksRemaining;
+    private static int currentPlayer; //either player 1 or 2
+    private static int compSkillLevel; //easy, medium, or hard
+    private static int winsNeeded;
+    private static int player1Wins; //count how many times that player1 won
+    private static int player2Wins; //count how many times that player2 won
+    private static String player1Name;
+    private static String player2Name;
+    private static boolean randomMaxToothpicksPerTurn; //whether computer will randomly decide the value of maxToothpicksPerTurn in the beginning of every game
+
     public static void main(String[] args)
     {
         displayWelcomeBanner(); //Display welcome banner
@@ -108,7 +109,7 @@ public class TheToothpickGame
 
             String difficultyLevel = userInput.nextLine();
             while(!difficultyLevel.equals("1") && !difficultyLevel.equals("2") && !difficultyLevel.equals("3")){
-                System.out.print(player1Name + ", that was not one of the options!  Pick 1, 2, or 3. ");
+                System.out.print(player1Name + ", is in valid!  Pick 1, 2, or 3. ");
                 difficultyLevel = userInput.nextLine();
             }
             if(difficultyLevel.equals("1")){
@@ -229,7 +230,6 @@ public class TheToothpickGame
      *                 variable holding the maximum number per turn are all properly set
      */
     private static void initializeGame(){
-        Scanner userInput = new Scanner(System.in);
         System.out.println();
         System.out.println("So let's start playing!");
         if(randomMaxToothpicksPerTurn){
@@ -239,10 +239,10 @@ public class TheToothpickGame
         toothpicksRemaining = (int)(Math.random() * 20) + 20;
         System.out.println("This turn, there are " + toothpicksRemaining + " on the table.");
         currentPlayer = (int)(Math.random() * 2) + 1;
-        if(computerOpponent && currentPlayer == 2){
-            System.out.println("After flipping a coin, I am luckily be decided to go first.");
+        if(currentPlayer == 2){
+            System.out.println("After flipping a coin, " + player2Name + " is going to go first.");
         }else{
-            System.out.println("After flipping a coin, player " + currentPlayer + " is decided to go first.");
+            System.out.println("After flipping a coin, " + player1Name + " is decided to go first.");
         }
     }
 
@@ -304,7 +304,7 @@ public class TheToothpickGame
             }else{
                 System.out.print("**Error** You cannot take negative number of toothpicks nor not taking any toothpicks.");
             }
-            System.out.print("Please enter the number of toothpicks you want to take this turn again: ");
+            System.out.print(" Please enter the number of toothpicks you want to take this turn again: ");
             numToothpicks = userInput.nextInt();
         }
         toothpicksRemaining -= numToothpicks;
@@ -542,7 +542,7 @@ public class TheToothpickGame
         }else{
             System.out.println("Congratulations! " + player2Name + ", you have won this game!");
         }
-        System.out.println("In total, " + player1Name + " have won " + player1Wins + " games, and " + player2Name + " have won " + player2Wins + " games.");
+        System.out.println("In total, " + player1Name + " has won " + player1Wins + " games, and " + player2Name + " has won " + player2Wins + " games.");
     }
 
     /**
